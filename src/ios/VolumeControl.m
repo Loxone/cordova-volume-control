@@ -29,6 +29,7 @@ static void *OutputVolumeContext = &OutputVolumeContext;
     
     if (!self.avSession) {
         self.avSession = [AVAudioSession sharedInstance];
+        [self.avSession setCategory:AVAudioSessionCategoryAmbient error:nil];
         [self.avSession setActive: true error:nil];
     }
     
