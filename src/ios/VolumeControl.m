@@ -81,7 +81,9 @@ static void *OutputVolumeContext = &OutputVolumeContext;
 - (void)stopObservingVolumeChanges
 {
     @try {
+        [self.avSession setActive:false error:nil];
         [self.avSession removeObserver:self forKeyPath: @"outputVolume" context:OutputVolumeContext];
+        self.avSession = nil;
     } @catch (id anException) {
         // do nothing, obviously it wasn't attached because an exception was thrown
     }
