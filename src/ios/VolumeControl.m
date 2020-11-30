@@ -8,10 +8,6 @@ static void *OutputVolumeContext = &OutputVolumeContext;
 
 - (void)pluginInitialize
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appHasGoneInforeground:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
     [super pluginInitialize];
 }
 
@@ -122,11 +118,6 @@ static void *OutputVolumeContext = &OutputVolumeContext;
 - (void)setVolume:(float)level
 {
     [[MPMusicPlayerController applicationMusicPlayer] setVolume:level];
-}
-
-- (void)appHasGoneInforeground:(NSNotification*)notification {
-    [self stopObservingVolumeChanges];
-    [self startObservingVolumeChanges];
 }
 
 
